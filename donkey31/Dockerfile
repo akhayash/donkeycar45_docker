@@ -43,8 +43,9 @@ ENV PATH /opt/conda/envs/${env_name}/bin:$PATH
 WORKDIR /root/projects/donkeycar
 
 RUN pip install -e .[pc] && \
-    conda install tensorflow==1.13.1
-
+    # GPU enabled package can be found in conda repository. Waveshare wiki uses non gpu enabled tensorflow
+    conda install tensorflow==1.13.1=gpu_py37hc158e3b_0    
+    # conda install tensorflow==1.13.1
 
 # Install Cuda version 10.2`sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb`
 # RUN apt-get install -y gnupg2 && \

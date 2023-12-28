@@ -56,3 +56,10 @@ RUN apt-get install -y python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# Remove to fix a problem to enable GPU
+RUN rm -rf \
+    /usr/lib/x86_64-linux-gnu/libcuda.so* \
+    /usr/lib/x86_64-linux-gnu/libnvcuvid.so* \
+    /usr/lib/x86_64-linux-gnu/libnvidia-*.so* 
+    # /usr/local/cuda/compat/lib/*.515.65.01

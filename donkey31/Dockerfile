@@ -47,13 +47,13 @@ RUN pip install -e .[pc] && \
 
 
 # Install Cuda version 10.2`sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb`
-RUN apt-get install -y gnupg2 && \
+# RUN apt-get install -y gnupg2 && \
     # apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC && \
-    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb && \
-    dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb && \
+    # wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb && \
+    # dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb && \
     # apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub && \
-    apt-get update -y && \
-    apt-get install -y cuda 
+    # apt-get update -y && \
+    # apt-get install -y cuda 
 
 # Install PyGame for USB camera (Optional)
 RUN apt-get install -y python-dev libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev python-numpy subversion libportmidi-dev ffmpeg libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev && \

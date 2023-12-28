@@ -1,5 +1,6 @@
 # Use the official Ubuntu 22.04 LTS base image
-FROM ubuntu:18.04
+# FROM ubuntu:18.04
+FROM nvcr.io/nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
 # ENV APT_OPTIONS="-o Acquire::Retries=10"
 ENV DEBIAN_FRONTEND=noninteractive
@@ -41,9 +42,12 @@ WORKDIR /root/projects/donkeycar
 RUN pip install -e .[pc] && \
     conda install tensorflow==1.13.1
 
+
 # Install Cuda version 10.2`sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb`
 RUN apt-get install -y gnupg2 && \
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC && \
+    # apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC && \
+    apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/3bf863cc.pub && \
+    apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub && \
     wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb && \
     dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb && \
     # apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub && \

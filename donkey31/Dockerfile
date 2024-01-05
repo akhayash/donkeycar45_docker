@@ -39,6 +39,7 @@ RUN conda env create -f /root/projects/donkeycar/install/envs/ubuntu.yml && \
     echo "conda activate ${env_name}" >> ~/.bashrc 
    
 ENV PATH /opt/conda/envs/${env_name}/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/local/cuda-10.2/compat/:$LD_LIBRARY_PATH
 
 WORKDIR /root/projects/donkeycar
 
